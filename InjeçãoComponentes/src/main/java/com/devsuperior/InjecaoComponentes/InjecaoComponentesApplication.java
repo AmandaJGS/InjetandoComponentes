@@ -24,24 +24,24 @@ public class InjecaoComponentesApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception{
-        Scanner scanner = new Scanner(System.in);
 
-        System.out.println("Digite o código do produto:");
-        Integer cod = scanner.nextInt();
+        Order order = new Order(1034, 150.00, 20.00);
+        double total = orderService.total(order);
 
-        System.out.println("Digite o valor do produto:");
-        double valor = scanner.nextDouble();
+        Order order2 = new Order(2282, 800.00, 10.00);
+        double total2 = orderService.total(order2);
 
-        System.out.println("Digite o  valor do desconto do produto:");
-        double desconto = scanner.nextDouble();
+        Order order3 = new Order(1309, 95.90, 0.0);
+        double total3 = orderService.total(order3);
 
-        Order obj = new Order(cod, valor,desconto);
-        Double resulte = orderService.total(obj);
-        Order order = new Order(cod,resulte,desconto);
-        Double rest = shippingService.shipment(order);
+        System.out.println("Pedido código " + order.getCode());
+        System.out.printf("Valor total: R$ %.2f%n", total);
 
-        System.out.println("Pedido código " + cod);
-        System.out.println("Valor total: " + rest);
+        System.out.println("Pedido código " + order2.getCode());
+        System.out.printf("Valor total: R$ %.2f%n", total2);
+
+        System.out.println("Pedido código " + order3.getCode());
+        System.out.printf("Valor total: R$ %.2f%n", total3);
     }
 
 }

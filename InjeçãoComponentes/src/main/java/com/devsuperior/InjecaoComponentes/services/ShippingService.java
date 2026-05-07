@@ -6,14 +6,13 @@ import org.springframework.stereotype.Service;
 @Service
 public class ShippingService {
 
-    public double shipment(Order order){
-        if (order.getBasic() < 100){
-            return order.getBasic() + 20;
-        }else if (order.getBasic() > 100 && order.getBasic() < 200){
-            return order.getBasic() + 12;
+    public double shipment(Order basic) {
+        if (basic.getBasic() < 100.0) {
+            return 20.0;
+        } else if (basic.getBasic() < 200.0) {
+            return 12.0;
         } else {
-            return order.getBasic();
+            return 0.0;
         }
-
     }
 }
